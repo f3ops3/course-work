@@ -28,7 +28,7 @@ public class TestDataLoader implements CommandLineRunner {
 
   @Override
   public void run(String... args) {
-    if (treasuryDepartmentRepository.count() == 1) {
+    if (treasuryDepartmentRepository.count() == 0) {
       for (int i = 1; i <= 5; i++) {
         TreasuryDepartment department = new TreasuryDepartment();
         department.setName("Казначейство №" + i);
@@ -38,7 +38,7 @@ public class TestDataLoader implements CommandLineRunner {
       }
     }
 
-    if (budgetaryInstitutionRepository.count() == 1) {
+    if (budgetaryInstitutionRepository.count() == 0) {
       List<TreasuryDepartment> departments = treasuryDepartmentRepository.findAll();
       for (int i = 1; i <= 5; i++) {
         BudgetaryInstitution institution = new BudgetaryInstitution();
@@ -50,7 +50,7 @@ public class TestDataLoader implements CommandLineRunner {
       }
     }
 
-    if (kekvRepository.count() == 1) {
+    if (kekvRepository.count() == 0) {
       for (int i = 1; i <= 5; i++) {
         Kekv kekv = new Kekv();
         kekv.setName("КЕКВ" + (1000 + i));
@@ -59,7 +59,7 @@ public class TestDataLoader implements CommandLineRunner {
       }
     }
 
-    if (budgetRepository.count() == 1) {
+    if (budgetRepository.count() == 0) {
       List<BudgetaryInstitution> institutions = budgetaryInstitutionRepository.findAll();
       List<Kekv> kekvs = kekvRepository.findAll();
       for (int i = 1; i <= 5; i++) {
@@ -73,7 +73,7 @@ public class TestDataLoader implements CommandLineRunner {
       }
     }
 
-    if (paymentOrderRepository.count() == 1) {
+    if (paymentOrderRepository.count() == 0) {
       List<BudgetaryInstitution> institutions = budgetaryInstitutionRepository.findAll();
       List<Kekv> kekvs = kekvRepository.findAll();
       for (int i = 1; i <= 5; i++) {
