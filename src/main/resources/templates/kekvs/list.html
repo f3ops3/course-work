@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>КЕКВ</title>
+</head>
+<body>
+<h1>Коди економічної класифікації видатків (КЕКВ)</h1>
+
+<a href="/kekvs/create">Створити новий КЕКВ</a>
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Назва</th>
+        <th>Опис</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="kekv : ${kekvs}">
+        <td th:text="${kekv.id}"></td>
+        <td th:text="${kekv.name}"></td>
+        <td th:text="${kekv.description}"></td>
+        <td>
+            <a th:href="@{'/kekvs/edit/' + ${kekv.id}}">Редагувати</a> |
+            <a th:href="@{'/kekvs/delete/' + ${kekv.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/about">Про автора</a>
+</body>
+</html>

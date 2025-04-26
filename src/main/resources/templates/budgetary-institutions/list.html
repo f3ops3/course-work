@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Бюджетні установи</title>
+</head>
+<body>
+<h1>Бюджетні установи</h1>
+
+<a href="/budgetary-institutions/create">Створити нову бюджетну установу</a>
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>ЄДРПОУ код</th>
+        <th>Локація</th>
+        <th>Назва</th>
+        <th>Казначейство</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="institution : ${budgetaryInstitutions}">
+        <td th:text="${institution.id}"></td>
+        <td th:text="${institution.edrpouCode}"></td>
+        <td th:text="${institution.location}"></td>
+        <td th:text="${institution.name}"></td>
+        <td th:text="${institution.treasuryDepartmentId}"></td>
+        <td>
+            <a th:href="@{'/budgetary-institutions/edit/' + ${institution.id}}">Редагувати</a> |
+            <a th:href="@{'/budgetary-institutions/delete/' + ${institution.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/about">Про автора</a>
+</body>
+</html>

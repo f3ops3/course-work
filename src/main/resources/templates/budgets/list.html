@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Бюджети</title>
+</head>
+<body>
+<h1>Бюджети</h1>
+
+<a href="/budgets/create">Створити новий бюджет</a>
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Рік</th>
+        <th>Загальний ліміт</th>
+        <th>Призначення</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="budget : ${budgets}">
+        <td th:text="${budget.id}"></td>
+        <td th:text="${budget.year}"></td>
+        <td th:text="${budget.totalLimit}"></td>
+        <td th:text="${budget.purpose}"></td>
+        <td>
+            <a th:href="@{'/budgets/edit/' + ${budget.id}}">Редагувати</a> |
+            <a th:href="@{'/budgets/delete/' + ${budget.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/about">Про автора</a>
+</body>
+</html>

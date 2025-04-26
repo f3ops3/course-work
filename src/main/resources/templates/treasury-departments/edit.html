@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагувати казначейське відділення</title>
+</head>
+<body>
+<h1>Редагувати казначейське відділення</h1>
+
+<form th:action="@{'/treasury-departments/edit/' + ${treasuryDepartment.id}}" th:object="${treasuryDepartment}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br><br>
+
+    <label>Місцезнаходження:</label>
+    <input type="text" th:field="*{location}" /><br><br>
+
+    <label>Тип:</label>
+    <input type="text" th:field="*{institutionServiceType}" /><br><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<br>
+<a href="/treasury-departments">Назад до списку</a>
+</body>
+</html>

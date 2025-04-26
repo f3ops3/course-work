@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагувати бюджет</title>
+</head>
+<body>
+<h1>Редагувати бюджет</h1>
+
+<form th:action="@{'/budgets/edit/' + ${budget.id}}" th:object="${budget}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Рік:</label>
+    <input type="number" th:field="*{year}" /><br><br>
+
+    <label>Загальний ліміт:</label>
+    <input type="number" step="0.01" th:field="*{totalLimit}" /><br><br>
+
+    <label>Призначення:</label>
+    <input type="text" th:field="*{purpose}" /><br><br>
+
+    <label>КЕКВ (ID):</label>
+    <input type="text" th:field="*{kekvId}" /><br><br>
+
+    <label>Бюджетна установа (ID):</label>
+    <input type="text" th:field="*{budgetaryInstitutionId}" /><br><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<br>
+<a href="/budgets">Назад до списку</a>
+</body>
+</html>

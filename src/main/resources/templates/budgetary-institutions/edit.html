@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагувати бюджетну установу</title>
+</head>
+<body>
+<h1>Редагувати бюджетну установу</h1>
+
+<form th:action="@{'/budgetary-institutions/edit/' + ${budgetaryInstitution.id}}" th:object="${budgetaryInstitution}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>ЄДРПОУ код:</label>
+    <input type="text" th:field="*{edrpouCode}" /><br><br>
+
+    <label>Локація:</label>
+    <input type="text" th:field="*{location}" /><br><br>
+
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br><br>
+
+    <label>ID казначейства:</label>
+    <input type="text" th:field="*{treasuryDepartmentId}" /><br><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<br>
+<a href="/budgetary-institutions">Назад до списку</a>
+</body>
+</html>

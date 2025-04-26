@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Створити платіжне доручення</title>
+</head>
+<body>
+<h1>Створити платіжне доручення</h1>
+
+<form action="#" th:action="@{/payment-orders/create}" th:object="${paymentOrder}" method="post">
+    <label>Дата:</label>
+    <input type="date" th:field="*{date}" /><br><br>
+
+    <label>Сума:</label>
+    <input type="number" step="0.01" th:field="*{amount}" /><br><br>
+
+    <label>Отримувач:</label>
+    <input type="text" th:field="*{recipient}" /><br><br>
+
+    <label>Бюджетна установа (ID):</label>
+    <input type="text" th:field="*{budgetaryInstitutionId}" /><br><br>
+
+    <label>КЕКВ (ID):</label>
+    <input type="text" th:field="*{kekvId}" /><br><br>
+
+    <button type="submit">Створити</button>
+</form>
+
+<br>
+<a href="/payment-orders">Назад до списку</a>
+</body>
+</html>

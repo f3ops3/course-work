@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Редагувати КЕКВ</title>
+</head>
+<body>
+<h1>Редагувати КЕКВ</h1>
+
+<form th:action="@{'/kekvs/edit/' + ${kekv.id}}" th:object="${kekv}" method="post">
+    <input type="hidden" th:field="*{id}" />
+
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br><br>
+
+    <label>Опис:</label>
+    <input type="text" th:field="*{description}" /><br><br>
+
+    <button type="submit">Зберегти</button>
+</form>
+
+<br>
+<a href="/kekvs">Назад до списку</a>
+</body>
+</html>

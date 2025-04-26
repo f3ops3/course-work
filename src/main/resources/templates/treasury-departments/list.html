@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Казначейські відділення</title>
+</head>
+<body>
+<h1>Казначейські відділення</h1>
+
+<a href="/treasury-departments/create">Створити нове казначейське відділення</a>
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Назва</th>
+        <th>Місцезнаходження</th>
+        <th>Тип</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="department : ${treasuryDepartments}">
+        <td th:text="${department.id}"></td>
+        <td th:text="${department.name}"></td>
+        <td th:text="${department.location}"></td>
+        <td th:text="${department.institutionServiceType}"></td>
+        <td>
+            <a th:href="@{'/treasury-departments/edit/' + ${department.id}}">Редагувати</a> |
+            <a th:href="@{'/treasury-departments/delete/' + ${department.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/about">Про автора</a>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Платіжні доручення</title>
+</head>
+<body>
+<h1>Платіжні доручення</h1>
+
+<a href="/payment-orders/create">Створити нове платіжне доручення</a>
+<hr>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Дата</th>
+        <th>Сума</th>
+        <th>Отримувач</th>
+        <th>Дії</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${paymentOrders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.date}"></td>
+        <td th:text="${order.amount}"></td>
+        <td th:text="${order.recipient}"></td>
+        <td>
+            <a th:href="@{'/payment-orders/edit/' + ${order.id}}">Редагувати</a> |
+            <a th:href="@{'/payment-orders/delete/' + ${order.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<br>
+<a href="/about">Про автора</a>
+</body>
+</html>

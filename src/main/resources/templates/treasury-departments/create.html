@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Створити казначейське відділення</title>
+</head>
+<body>
+<h1>Створити казначейське відділення</h1>
+
+<form action="#" th:action="@{/treasury-departments/create}" th:object="${treasuryDepartment}" method="post">
+    <label>Назва:</label>
+    <input type="text" th:field="*{name}" /><br><br>
+
+    <label>Місцезнаходження:</label>
+    <input type="text" th:field="*{location}" /><br><br>
+
+    <label>Тип:</label>
+    <input type="text" th:field="*{institutionServiceType}" /><br><br>
+
+    <button type="submit">Створити</button>
+</form>
+
+<br>
+<a href="/treasury-departments">Назад до списку</a>
+</body>
+</html>
