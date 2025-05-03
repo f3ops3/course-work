@@ -27,11 +27,12 @@ public class BudgetaryInstitutionServiceImpl implements BudgetaryInstitutionServ
     public BudgetaryInstitutionDTO create(BudgetaryInstitutionDTO dto) {
         BudgetaryInstitution entity = budgetaryInstitutionMapper.toEntity(dto);
 
-        if (dto.getTreasuryDepartmentId() != null) {
-            TreasuryDepartment department = treasuryDepartmentRepository.findById(dto.getTreasuryDepartmentId())
-                    .orElseThrow(() -> new EntityNotFoundException("TreasuryDepartment not found"));
-            entity.setTreasuryDepartment(department);
-        }
+        TreasuryDepartment treasuryDepartment = treasuryDepartmentRepository
+                .findByName(dto.getTreasuryDepartmentName());
+
+        TreasuryDepartment department = treasuryDepartmentRepository.findById(treasuryDepartment.getId())
+                .orElseThrow(() -> new EntityNotFoundException("TreasuryDepartment not found"));
+        entity.setTreasuryDepartment(department);
 
         BudgetaryInstitution saved = budgetaryInstitutionRepository.save(entity);
         return budgetaryInstitutionMapper.toDto(saved);
@@ -46,10 +47,10 @@ public class BudgetaryInstitutionServiceImpl implements BudgetaryInstitutionServ
         existing.setLocation(dto.getLocation());
         existing.setEdrpouCode(dto.getEdrpouCode());
 
-        if (dto.getTreasuryDepartmentId() != null) {
-            TreasuryDepartment department = treasuryDepartmentRepository.findById(dto.getTreasuryDepartmentId())
-                    .orElseThrow(() -> new EntityNotFoundException("TreasuryDepartment not found"));
-            existing.setTreasuryDepartment(department);
+        if (dto.getTreasuryDepartmentName() != null && !dto.getTreasuryDepartmentName().isEmpty()) {
+            TreasuryDepartment treasuryDepartment = treasuryDepartmentRepository
+                    .findByName(dto.getTreasuryDepartmentName());
+            existing.setTreasuryDepartment(treasuryDepartment);
         } else {
             existing.setTreasuryDepartment(null);
         }
@@ -57,6 +58,7 @@ public class BudgetaryInstitutionServiceImpl implements BudgetaryInstitutionServ
         BudgetaryInstitution updated = budgetaryInstitutionRepository.save(existing);
         return budgetaryInstitutionMapper.toDto(updated);
     }
+
 
     @Override
     @Transactional(readOnly = true)

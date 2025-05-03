@@ -5,4 +5,5 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface TreasuryDepartmentRepository extends JpaRepository<TreasuryDepartment, UUID> {
+  TreasuryDepartment findByName(String name);
 }

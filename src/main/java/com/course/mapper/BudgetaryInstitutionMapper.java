@@ -17,8 +17,8 @@ public class BudgetaryInstitutionMapper {
                 .edrpouCode(entity.getEdrpouCode())
                 .location(entity.getLocation())
                 .name(entity.getName())
-                .treasuryDepartmentId(
-                        entity.getTreasuryDepartment() != null ? entity.getTreasuryDepartment().getId() : null
+                .treasuryDepartmentName(
+                        entity.getTreasuryDepartment() != null ? entity.getTreasuryDepartment().getName() : null
                 )
                 .build();
     }

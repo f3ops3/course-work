@@ -20,8 +20,14 @@
     <label>Назва:</label>
     <input type="text" th:field="*{name}" /><br><br>
 
-    <label>ID казначейства:</label>
-    <input type="text" th:field="*{treasuryDepartmentId}" /><br><br>
+    <label>Казначейство:</label>
+    <select id="treasuryDepartmentId" th:field="*{treasuryDepartmentName}" required>
+        <option value="" disabled selected>Оберіть казначейство</option>
+        <option th:each="dept : ${treasuryDepartments}"
+                th:value="${dept.name}"
+                th:text="${dept.name}">
+        </option>
+    </select><br><br>
 
     <button type="submit">Зберегти</button>
 </form>

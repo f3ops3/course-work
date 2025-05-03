@@ -28,7 +28,7 @@
         <td th:text="${institution.edrpouCode}"></td>
         <td th:text="${institution.location}"></td>
         <td th:text="${institution.name}"></td>
-        <td th:text="${institution.treasuryDepartmentId}"></td>
+        <td th:text="${institution.treasuryDepartmentName}"></td>
         <td>
             <a th:href="@{'/budgetary-institutions/edit/' + ${institution.id}}">Редагувати</a> |
             <a th:href="@{'/budgetary-institutions/delete/' + ${institution.id}}" onclick="return confirm('Ви впевнені?')">Видалити</a>

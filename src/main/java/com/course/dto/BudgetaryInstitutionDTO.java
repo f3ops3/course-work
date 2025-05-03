@@ -15,5 +15,5 @@ public class BudgetaryInstitutionDTO {
     private String edrpouCode;
     private String location;
     private String name;
-    private UUID treasuryDepartmentId;
+    private String treasuryDepartmentName;
 }
